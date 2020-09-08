@@ -1,10 +1,9 @@
 // == Imports
 import store from 'src/store';
 import {
-  directionToLeft,
-  directionToRight,
   randomFirstColor,
   randomLastColor,
+  changeGradientAngle,
 } from 'src/actions/';
 
 import { randomHexColor, generateSpanColor } from './utils';
@@ -92,27 +91,58 @@ document.getElementById('randLast')
     store.dispatch(randomLastColor(randomHexColor()));
   });
 
-document.getElementById('toLeft')
-  .addEventListener('click', () => {
-    // state.direction = '270deg';
+// document.getElementById('toLeft')
+//   .addEventListener('click', () => {
+//     // state.direction = '270deg';
 
-    // Si je veux appliquer un changement sur le State (Puisque
-    // on s'en sert comme source de verité) : je décris
-    // l'intention avec des mots , et le reducer se débrouillera.
+//     // Si je veux appliquer un changement sur le State (Puisque
+//     // on s'en sert comme source de verité) : je décris
+//     // l'intention avec des mots , et le reducer se débrouillera.
 
-    const action = directionToLeft();
+//     // const action = directionToLeft();
 
-    // on envoie l'action au store => dispatch
-    store.dispatch(action);
+//     // on envoie l'action au store => dispatch
+//     store.dispatch(changeGradientAngle('270deg'));
+//   });
+
+// document.getElementById('toRight')
+//   .addEventListener('click', () => {
+//     // const action = {
+//     //   type: 'DIRECTION_TO_RIGHT',
+//     // };
+
+//     // store.dispatch(action);
+//     store.dispatch(changeGradientAngle('90deg'));
+//     // state.direction = '90deg';
+//   });
+
+// document.getElementById('deg-45')
+//   .addEventListener('click', () => {
+//     store.dispatch(changeGradientAngle('45deg'));
+//   });
+
+// document.getElementById('deg-135')
+//   .addEventListener('click', () => {
+//     store.dispatch(changeGradientAngle('135deg'));
+//   });
+
+// document.getElementById('deg-225')
+//   .addEventListener('click', () => {
+//     store.dispatch(changeGradientAngle('225deg'));
+//   });
+
+// document.getElementById('deg-315')
+//   .addEventListener('click', () => {
+//     store.dispatch(changeGradientAngle('315deg'));
+//   });
+
+const angleButtons = document.querySelectorAll('.angle');
+
+// console.log(angleButtons);
+
+angleButtons.forEach((angleButton) => {
+  angleButton.addEventListener('click', (event) => {
+    // console.log(event.target.value);
+    store.dispatch(changeGradientAngle(event.target.value));
   });
-
-document.getElementById('toRight')
-  .addEventListener('click', () => {
-    // const action = {
-    //   type: 'DIRECTION_TO_RIGHT',
-    // };
-
-    // store.dispatch(action);
-    store.dispatch(directionToRight());
-    // state.direction = '90deg';
-  });
+});

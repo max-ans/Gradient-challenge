@@ -1,8 +1,9 @@
 import {
   RANDOM_FIRST_COLOR,
   RANDOM_LAST_COLOR,
-  DIRECTION_TO_LEFT,
-  DIRECTION_TO_RIGHT,
+  // DIRECTION_TO_LEFT,
+  // DIRECTION_TO_RIGHT,
+  CHANGE_GRADIENT_ANGLE,
 } from 'src/actions/';
 
 const initialState = {
@@ -19,16 +20,16 @@ function reducer(state = initialState, action = {}) {
   // console.log('appel à la fonction reducer', action);
 
   switch (action.type) {
-    case DIRECTION_TO_LEFT:
-      return {
-        ...state,
-        direction: '270deg',
-      };
-    case DIRECTION_TO_RIGHT:
-      return {
-        ...state,
-        direction: '90deg',
-      };
+    // case DIRECTION_TO_LEFT:
+    //   return {
+    //     ...state,
+    //     direction: '270deg',
+    //   };
+    // case DIRECTION_TO_RIGHT:
+    //   return {
+    //     ...state,
+    //     direction: '90deg',
+    //   };
     case RANDOM_FIRST_COLOR:
       return {
         ...state,
@@ -40,6 +41,11 @@ function reducer(state = initialState, action = {}) {
         ...state,
         nbColors: state.nbColors + 1,
         lastColor: action.newColor,
+      };
+    case CHANGE_GRADIENT_ANGLE:
+      return {
+        ...state,
+        direction: action.angle,
       };
     default:
       return state;
