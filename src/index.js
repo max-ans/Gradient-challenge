@@ -92,6 +92,12 @@ document.getElementById('toLeft')
 
 document.getElementById('toRight')
   .addEventListener('click', () => {
+    // const action = {
+    //   type: 'DIRECTION_TO_RIGHT',
+    // };
+
+    // store.dispatch(action);
+    store.dispatch({ type: 'DIRECTION_TO_RIGHT' });
     // state.direction = '90deg';
     renderGradient();
     renderColors();
