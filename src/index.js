@@ -1,13 +1,14 @@
 // == Imports
 import store from 'src/store';
 import {
-  RANDOM_FIRST_COLOR,
-  RANDOM_LAST_COLOR,
-  DIRECTION_TO_LEFT,
-  DIRECTION_TO_RIGHT,
+  directionToLeft,
+  directionToRight,
+  randomFirstColor,
+  randomLastColor,
 } from 'src/actions/';
 
 import { randomHexColor, generateSpanColor } from './utils';
+
 // console.log(store);
 // console.log(store.getState());
 
@@ -66,14 +67,9 @@ document.getElementById('randAll')
     // ou bien utiliser les deux dispatch suivant pour
     // le firstColor et le lastColor
 
-    store.dispatch({
-      type: RANDOM_FIRST_COLOR,
-      newColor: randomHexColor(),
-    });
-    store.dispatch({
-      type: RANDOM_LAST_COLOR,
-      newColor: randomHexColor(),
-    });
+    store.dispatch(randomFirstColor(randomHexColor()));
+
+    store.dispatch(randomLastColor(randomHexColor()));
   });
 
 document.getElementById('randFirst')
@@ -86,21 +82,14 @@ document.getElementById('randFirst')
     // il peut y avoir des propriétés supplémentaires , c'est ce
     // que l'on appelle le PAYLOAD de l'action. Dans notre cas ,
     // le PAYLOAD de cette action est la propriété newColor
-    store.dispatch({
-      type: RANDOM_FIRST_COLOR,
-      newColor: randomHexColor(),
-    });
+    store.dispatch(randomFirstColor(randomHexColor()));
   });
 
 document.getElementById('randLast')
   .addEventListener('click', () => {
     // state.nbColors += 1;
     // state.lastColor = randomHexColor();
-
-    store.dispatch({
-      type: RANDOM_LAST_COLOR,
-      newColor: randomHexColor(),
-    });
+    store.dispatch(randomLastColor(randomHexColor()));
   });
 
 document.getElementById('toLeft')
@@ -111,9 +100,7 @@ document.getElementById('toLeft')
     // on s'en sert comme source de verité) : je décris
     // l'intention avec des mots , et le reducer se débrouillera.
 
-    const action = {
-      type: DIRECTION_TO_LEFT,
-    };
+    const action = directionToLeft();
 
     // on envoie l'action au store => dispatch
     store.dispatch(action);
@@ -126,6 +113,6 @@ document.getElementById('toRight')
     // };
 
     // store.dispatch(action);
-    store.dispatch({ type: DIRECTION_TO_RIGHT });
+    store.dispatch(directionToRight());
     // state.direction = '90deg';
   });
