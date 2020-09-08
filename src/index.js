@@ -74,6 +74,18 @@ document.getElementById('randLast')
 document.getElementById('toLeft')
   .addEventListener('click', () => {
     // state.direction = '270deg';
+
+    // Si je veux appliquer un changement sur le State (Puisque
+    // on s'en sert comme source de verité) : je décris
+    // l'intention avec des mots , et le reducer se débrouillera.
+
+    const action = {
+      type: 'DIRECTION_TO_LEFT',
+    };
+
+    // on envoie l'action au store => dispatch
+    store.dispatch(action);
+
     renderGradient();
     renderColors();
   });
