@@ -1,3 +1,10 @@
+import {
+  RANDOM_FIRST_COLOR,
+  RANDOM_LAST_COLOR,
+  DIRECTION_TO_LEFT,
+  DIRECTION_TO_RIGHT,
+} from 'src/actions/';
+
 const initialState = {
   firstColor: '#e367a4',
   lastColor: '#48b1f3',
@@ -8,19 +15,31 @@ const initialState = {
 // reducer : fonction qui prend un argument (le state actuel) et une
 // action, et qui retourne le nouveau state
 function reducer(state = initialState, action = {}) {
-  // TODO : retourner le nouveau state sur lequel on a appliqué l'action
+  //  retourner le nouveau state sur lequel on a appliqué l'action
   // console.log('appel à la fonction reducer', action);
 
   switch (action.type) {
-    case 'DIRECTION_TO_LEFT':
+    case DIRECTION_TO_LEFT:
       return {
         ...state,
         direction: '270deg',
       };
-    case 'DIRECTION_TO_RIGHT':
+    case DIRECTION_TO_RIGHT:
       return {
         ...state,
         direction: '90deg',
+      };
+    case RANDOM_FIRST_COLOR:
+      return {
+        ...state,
+        nbColors: state.nbColors + 1,
+        firstColor: action.newColor,
+      };
+    case RANDOM_LAST_COLOR:
+      return {
+        ...state,
+        nbColors: state.nbColors + 1,
+        lastColor: action.newColor,
       };
     default:
       return state;

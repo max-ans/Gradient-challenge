@@ -1,0 +1,6 @@
+// actions types
+
+export const DIRECTION_TO_LEFT = 'DIRECTION_TO_LEFT';
+export const DIRECTION_TO_RIGHT = 'DIRECTION_TO_RIGHT';
+export const RANDOM_FIRST_COLOR = 'RANDOM_FIRST_COLOR';
+export const RANDOM_LAST_COLOR = 'RANDOM_LAST_COLOR';
