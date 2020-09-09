@@ -1,13 +1,20 @@
 // == Import npm
 import React from 'react';
 
+import NbColors from 'src/components/NbColors';
+import Controls from 'src/components/Controls';
+import Gradient from 'src/components/Gradient';
+import Directions from 'src/components/Directions';
+
 // == Import
-import './styles.scss';
 
 // == Composant
 const App = () => (
   <div className="app">
-    <h1>Composant : App</h1>
+    <NbColors />
+    <Controls />
+    <Gradient />
+    <Directions />
   </div>
 );
 
