@@ -1,7 +1,7 @@
 // == Import npm
 import React from 'react';
 
-import NbColors from 'src/components/NbColors';
+import NbColors from 'src/containers/NbColors'; // attention ici on passe par le container (assistant) de NbColors
 import Controls from 'src/components/Controls';
 import Gradient from 'src/components/Gradient';
 import Directions from 'src/components/Directions';
