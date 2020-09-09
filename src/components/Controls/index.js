@@ -1,11 +1,15 @@
 import React from 'react';
+import Proptypes from 'prop-types';
 
-const Controls = () => (
+const Controls = ({ randomColorFirst, randomColorLast }) => (
   <div className="buttons group">
     <button
       type="button"
       className="button"
       id="randFirst"
+      onClick={() => {
+        randomColorFirst();
+      }}
     >
       Random First
     </button>
@@ -13,6 +17,10 @@ const Controls = () => (
       type="button"
       className="button"
       id="randAll"
+      onClick={() => {
+        randomColorFirst();
+        randomColorLast();
+      }}
     >
       Random All
     </button>
@@ -20,10 +28,17 @@ const Controls = () => (
       type="button"
       className="button"
       id="randLast"
+      onClick={() => {
+        randomColorLast();
+      }}
     >
       Random Last
     </button>
   </div>
 );
 
+Controls.propTypes = {
+  randomColorFirst: Proptypes.func.isRequired,
+  randomColorLast: Proptypes.func.isRequired,
+};
 export default Controls;
