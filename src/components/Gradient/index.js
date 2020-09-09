@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 // Dans le JSX , il ne faut qu'un seul élément
 // racine ==> pas 2 divs frères
@@ -6,9 +7,9 @@ import React from 'react';
 // - Créer une div englobant l'intégralité du JSX
 // - Utiliser un Fragment
 const Gradient = () => {
-  const firstColor = 'blue';
-  const lastColor = '#f0f';
-  const direction = '90deg';
+  const firstColor = useSelector((state) => state.firstColor);
+  const lastColor = useSelector((state) => state.lastColor);
+  const direction = useSelector((state) => state.direction);
   const gradient = `linear-gradient(${direction},${firstColor},${lastColor})`;
 
   const styleFirstSpan = {
